@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas</title>
+    <style>
+        /* 通用样式 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #2b5876, #4e4376);
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .card {
+            margin: 20px auto;
+            padding: 20px;
+            border: 5px solid #ff4500;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 90%; /* 适应手机和电脑 */
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 7vw; /* 使用相对单位，适配不同设备 */
+            color: #b22222;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 4vw; /* 自动调整字体大小 */
+            line-height: 1.6;
+            color: #000000;
+        }
+
+        .tree {
+            font-size: 5vw; /* 自适应树的大小 */
+            line-height: 1.2;
+            margin: 20px 0;
+            color: #228b22;
+        }
+
+        .tree .ornament {
+            color: red;
+            font-size: 5.5vw; /* 彩球大小适配屏幕 */
+        }
+
+        audio {
+            display: none; /* 隐藏音频控件 */
+        }
+
+        /* 动态雪花 */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            font-size: 24px;
+            color: white;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* 响应式样式 */
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 36px; /* 电脑屏幕字体更大 */
+            }
+
+            p {
+                font-size: 18px; /* 电脑屏幕段落字体更大 */
+            }
+
+            .tree {
+                font-size: 24px; /* 调整电脑屏幕树大小 */
+            }
+
+            .tree .ornament {
+                font-size: 28px; /* 调整电脑屏幕彩球大小 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态雪花 -->
+    <script>
+        function createSnowflakes() {
+            const snowContainer = document.body;
+            for (let i = 0; i < 50; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.textContent = '❄';
+                snowflake.style.left = Math.random() * 100 + 'vw';
+                snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+                snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+                snowContainer.appendChild(snowflake);
+            }
+        }
+        createSnowflakes();
+    </script>
+
+    <!-- 圣诞贺卡内容 -->
+    <div class="card">
+        <h1>Merry Christmas! 🎄</h1>
+        <div class="tree">
+            ★<br>
+            <span class="ornament">🎄</span><br>
+           🎄🎄🎄<br>
+          🎄<span class="ornament">🎁</span>🎄🎄🎄<br>
+         🎄🎄🎄<span class="ornament">🎁</span>🎄🎄<br>
+        🎄🎄<span class="ornament">🎁</span>🎄🎄🎄🎄🎄<br>
+       🎄🎄🎄🎄🎄🎄🎄🎄🎄<br>
+        </div>
+        <p>圣诞到，雪花飘，圣诞老人把门叫。</p>
+        <p>麋鹿跳，礼物到，快快开门把礼瞧。</p>
+        <p>不是金不是银，手机微信有一条。</p>
+        <p><b>祝大家圣诞节快乐，天天开心，事事顺利💕</b></p>
+        <audio id="background-music" autoplay loop>
+            <source src="music.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const music = document.getElementById('background-music');
+            music.play().catch(() => {
+                console.log('浏览器限制自动播放，请点击页面以播放音乐。');
+            });
+
+            document.addEventListener('click', () => {
+                music.play();
+            });
+        });
+    </script>
+</body>
+</html>
